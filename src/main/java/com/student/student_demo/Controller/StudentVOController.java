@@ -12,6 +12,7 @@ import java.util.List;
 @Controller
 public class StudentVOController {
     @Resource
+    //aDSFASHFUOIHASIDFHASJFHDIS
     private StudentVOSercie studentVOSercieImpl;
     @RequestMapping("/list")
     public String getList(Model model){
