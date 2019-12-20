@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>首页</title>
+</head>
+<style>
+    .odd{
+        background: yellow;
+    }
+</style>
+<body>
+<form th:action="@{/list}" method="get">
+    <table border="1px solid">
+        <tr><td colspan="7" th:align="center" style="color: red"><h1>学生信息列表</h1></td></tr>
+        <tr><td colspan="7" align="right"><a th:href="@{/addstudent}">添加学员</a></td></tr>
+        <tr><td>编号</td><td>姓名</td><td>性别</td><td>年龄</td><td>电话</td><td>email</td><td>班级</td></tr>
+        <tr th:each="studentvo,status:${list}" th:class="${status.even}?'odd':''">
+            <td th:text="${studentvo.getId()}"/>
+            <td th:text="${studentvo.getName()}"/>
+            <td th:text="${studentvo.getGender()}"/>
+            <td th:text="${studentvo.getAge()}"/>
+            <td th:text="${studentvo.getTelephone()}"/>
+            <td th:text="${studentvo.getEmail()}"/>
+            <td th:text="${studentvo.getClassName()}"/>
+        </tr>
+    </table>
+</form>
+</body>
+</html>

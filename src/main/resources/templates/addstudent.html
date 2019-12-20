@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" th:src="@{/js/jquery-1.8.3.min.js}"></script>
+    <script type="text/javascript" th:inline="javascript">
+        /*<[CDATA[*/
+        function fn() {
+            var name=$("#name").val();
+            var gender=$("#gender").val();
+            var age=$("#age").val();
+            var telephone=$("#telephone").val();
+            var email=$("#email").val();
+            var select=$("#select").val();
+            var reg = /^[a-zA-Z0-9]+@[a-z0-9]{2,5}\.[a-z]{2,3}(\.[a-z]{2,3})?$/;
+            var result=reg.test(email);
+            if(null==name){
+                alert("姓名不能为空");
+            }else if(null==gender){
+                alert("性别不能为空");
+            }else if(null==age){
+                alert("年龄不能为空");
+            }else if(null==telephone){
+                alert("电话不能为空");
+            }else if(email==null||!result){
+                alert("邮箱格式错误");
+            }else{
+                $("#form").submit();
+            }
+        }
+        /*]]>*/
+    </script>
+</head>
+<body>
+<form action="/addSave" id="form">
+    <table border="1px solid">
+        <tr><td colspan="2" align="center"><h1 style="color:red">学员信息添加</h1></td></tr>
+        <tr><td>姓名</td><td><input type="text" name="name" id="name"/></td></tr>
+        <tr><td>年龄</td><td><input type="text" name="age" id="age"/></td></tr>
+        <tr><td>性别</td><td><input type="text" name="gender" id="gender"/></td></tr>
+        <tr><td>电话</td><td><input type="text" name="telephone" id="telephone"/></td></tr>
+        <tr><td>email</td><td><input type="text" name="email" id="email"/></td></tr>
+        <tr><td>班级</td><td>
+            <select name="classId" id="select">
+                <option value="1">2134</option>
+                <option value="2">2156</option>
+                <option value="3">2188</option>
+                <option value="4">2323</option>
+                <option value="5">6888</option>
+                <option value="6">2413</option>
+            </select>
+        </td></tr>
+        <input type="hidden" name="studentVO" id="studentVO">
+        <tr><td colspan="2" align="center"><a href="#" onclick="fn();">保存</a>&nbsp;&nbsp;&nbsp;<a th:href="@{/list}">返回</a></td></tr>
+    </table>
+</form>
+</body>
+</html>
